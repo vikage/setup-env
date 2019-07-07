@@ -1,6 +1,6 @@
 #!/bin/sh
 
-# set -e
+set -e
 GREEN='\033[0;32m'
 RED='\033[0;32m'
 NC='\033[0m'
