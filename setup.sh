@@ -28,9 +28,26 @@ fi
 POWERLEVEL_9K_INSTALLED_CMD=$(git -C ~/powerlevel9k status > /dev/null 2>&1)
 POWERLEVEL_9K_INSTALLED=$?
 if [[ $POWERLEVEL_9K_INSTALLED -ne 0 ]]; then
-	print_green "* Installing powerlevel9k..."	
+	print_green "* Installing powerlevel9k..."
+	git clone https://github.com/bhilburn/powerlevel9k ~/powerlevel9k
+	if [[ $? -eq 0 ]]; then
+		print_green "* Powerlevel9k installed"
+	fi
 else
 	print_green "* Powerlevel9k installed"
+fi
+
+# Autosuggestion
+AUTOSUGGESTION_INSTALLED_CMD=$(git -C ~/.zsh/zsh-autosuggestions status > /dev/null 2>&1)
+AUTOSUGGESTION_INSTALLED=$?
+if [[ $AUTOSUGGESTION_INSTALLED -ne 0 ]]; then
+	print_green "* Installing zsh-autosuggestions..."	
+	git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions
+	if [[ $? -eq 0 ]]; then
+		print_green "* zsh-autosuggestions installed"
+	fi
+else
+	print_green "* zsh-autosuggestions installed"
 fi
 
 # Check codesnipet
