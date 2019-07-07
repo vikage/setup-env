@@ -87,6 +87,8 @@ print_green "* Coping zsh_profile ..."
 cp ~/ttmp/env/zsh/.zsh_profile ~/.zsh_profile
 print_green "* Coping zsh_rc ..."
 cp ~/ttmp/env/zsh/.zshrc ~/.zshrc
+print_green "* Coping lldbinit ..."
+cp ~/ttmp/env/config/.lldbinit ~/.lldbinit
 print_green "* Coping scripts ..."
 mkdir -p ~/.script/
 cp -r ~/ttmp/env/script/ ~/.script
