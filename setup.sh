@@ -1,12 +1,12 @@
-#!/bin/bash
+#!/bin/sh
 
-set -e
+# set -e
 GREEN='\033[0;32m'
 RED='\033[0;32m'
 NC='\033[0m'
 
 print_green(){
-	echo -e "${GREEN}$1${NC}"
+	echo "${GREEN}$1${NC}"
 }
 
 print_red(){
@@ -14,8 +14,9 @@ print_red(){
 }
 
 # Check zsh installed
-CURRENT_SHELL=$(echo $SHELL)
-if [ "${CURRENT_SHELL}" != "/bin/zsh" ]; then
+ZSH_CHECK_CMND=$(zsh --version > /dev/null 2>&1)
+ZSH_INSTALLED=$?
+if [ $ZSH_INSTALLED -ne 0 ]; then
 	print_green "* Installing zsh..."	
 
 	sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
