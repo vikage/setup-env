@@ -1,6 +1,6 @@
 #!/bin/sh
 
-set -e
+#set -e
 GREEN='\033[0;32m'
 RED='\033[0;31m'
 NC='\033[0m'
@@ -14,7 +14,7 @@ print_red(){
 }
 
 # Check zsh installed
-ZSH_CHECK_CMND=$(zsh --version > /dev/null 2>&1)
+ZSH_CHECK_CMND=$(git -C ~/.oh-my-zsh/ status > /dev/null 2>&1)
 ZSH_INSTALLED=$?
 if [ $ZSH_INSTALLED -ne 0 ]; then
 	print_green "* Installing zsh..."	
@@ -110,6 +110,12 @@ print_green "* Coping scripts ..."
 mkdir -p ~/.script/
 cp -r ~/ttmp/env/script/ ~/.script
 echo "export PATH=\$PATH:~/.script/" >> ~/.zsh_profile
+
+print_green "* Installing fonts ..."
+cp ~/ttmp/env/font/*.* ~/Library/Fonts
+
+print_green "* Installing iterm themes"
+open ~/ttmp/env/themes/Dracula.itermcolors
 
 # Clean up
 rm -rf ~/ttmp
