@@ -106,6 +106,8 @@ print_green "* Coping zsh_rc ..."
 cp ~/ttmp/env/zsh/.zshrc ~/.zshrc
 print_green "* Coping lldbinit ..."
 cp ~/ttmp/env/config/.lldbinit ~/.lldbinit
+print_green "* Coping lldb_commands ..."
+cp -r ~/ttmp/env/resource/lldb_commands ~
 print_green "* Coping scripts ..."
 mkdir -p ~/.script/
 cp -r ~/ttmp/env/script/ ~/.script
