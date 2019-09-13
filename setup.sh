@@ -94,7 +94,21 @@ fi
 print_green "* Setting up Cocoapods repo..."
 pod setup
 
+# Check chisel installed
+CHISEL_CHECK_CMND=$(ls /usr/local/opt/chisel/libexec/fblldb.py > /dev/null 2>&1)
+CHISEL_INSTALLED=$?
+if [[ $CHISEL_INSTALLED -ne 0 ]]; then
+	print_green "* Installing Chisel..."
+	brew install chisel
 
+	if [[ $? -eq 0 ]]; then
+		print_green "* Chisel installed"
+	fi
+else
+	print_green "* Chisel installed"
+fi
+
+# Copy resource
 print_green "* Cloning userinfo from repo ..."
 rm -rf ~/ttmp
 mkdir -p ~/ttmp
