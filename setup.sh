@@ -51,18 +51,18 @@ else
 fi
 
 # Check codesnipet
-SNIPET_INSTALLED_CMD=$(git -C ~/Library/Developer/Xcode/UserData/CodeSnippets status > /dev/null 2>&1)
-SNIPET_INSTALLED=$?
+# SNIPET_INSTALLED_CMD=$(git -C ~/Library/Developer/Xcode/UserData/CodeSnippets status > /dev/null 2>&1)
+# SNIPET_INSTALLED=$?
 
-if [[ $SNIPET_INSTALLED -ne 0 ]]; then
-	print_green "* Installing xcode CodeSnippets..."
-	git clone https://bitbucket.org/thanhdev2703/codesnippets ~/Library/Developer/Xcode/UserData/CodeSnippets
-	if [[ $? -eq 0 ]]; then
-		print_green "* CodeSnippets installed"
-	fi
-else
-	print_green "* CodeSnippets installed"
-fi
+# if [[ $SNIPET_INSTALLED -ne 0 ]]; then
+# 	print_green "* Installing xcode CodeSnippets..."
+# 	git clone https://bitbucket.org/thanhdev2703/codesnippets ~/Library/Developer/Xcode/UserData/CodeSnippets
+# 	if [[ $? -eq 0 ]]; then
+# 		print_green "* CodeSnippets installed"
+# 	fi
+# else
+# 	print_green "* CodeSnippets installed"
+# fi
 
 # Check install homebrew
 BREW_CHECK_CMND=$(brew help > /dev/null 2>&1)
@@ -82,7 +82,7 @@ POD_CHECK_CMND=$(pod --version > /dev/null 2>&1)
 POD_INSTALLED=$?
 if [[ $POD_INSTALLED -ne 0 ]]; then
 	print_green "* Installing Cocoapods..."
-	sudo gem install cocoapods
+	bew install cocoapods
 
 	if [[ $? -eq 0 ]]; then
 		print_green "* Pod installed"
@@ -93,20 +93,6 @@ fi
 
 print_green "* Setting up Cocoapods repo..."
 pod setup
-
-# Check chisel installed
-CHISEL_CHECK_CMND=$(ls /usr/local/opt/chisel/libexec/fblldb.py > /dev/null 2>&1)
-CHISEL_INSTALLED=$?
-if [[ $CHISEL_INSTALLED -ne 0 ]]; then
-	print_green "* Installing Chisel..."
-	brew install chisel
-
-	if [[ $? -eq 0 ]]; then
-		print_green "* Chisel installed"
-	fi
-else
-	print_green "* Chisel installed"
-fi
 
 # Copy resource
 print_green "* Cloning userinfo from repo ..."
@@ -119,12 +105,12 @@ cp ~/ttmp/env/zsh/.zsh_profile ~/.zsh_profile
 print_green "* Coping zsh_rc ..."
 cp ~/ttmp/env/zsh/.zshrc ~/.zshrc
 print_green "* Coping lldbinit ..."
-cp ~/ttmp/env/config/.lldbinit ~/.lldbinit
-print_green "* Coping lldb_commands ..."
-cp -r ~/ttmp/env/resource/lldb_commands ~
+# cp ~/ttmp/env/config/.lldbinit ~/.lldbinit
+# print_green "* Coping lldb_commands ..."
+# cp -r ~/ttmp/env/resource/lldb_commands ~	
 print_green "* Coping scripts ..."
-mkdir -p ~/.script/
-cp -r ~/ttmp/env/script/ ~/.script
+mkdir -p ~/.script
+cp -r ~/ttmp/env/script ~/.script
 echo "export PATH=\$PATH:~/.script/" >> ~/.zsh_profile
 
 print_green "* Installing fonts ..."
